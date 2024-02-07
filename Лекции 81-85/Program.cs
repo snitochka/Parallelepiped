@@ -1,7 +1,4 @@
-﻿
-using System.Dynamic;
-
-namespace Lessons
+﻿namespace Lessons
 {
     //1. Описать класс "параллелепипед", класс должен иметь базовый конструктор и конструктор с параметрами
     //Должны быть реализованы методы получения\установки значений x y z
@@ -19,9 +16,10 @@ namespace Lessons
             Parallelepiped parallelepiped1 = new Parallelepiped("Паралелепiпедом називається багатогранник, у якого 6 граней, 8 вершин i 12 ребер.", x, y, z);
             while (true)
             {
-                Console.WriteLine("Оберiть, будь ласка функцiонал, де \n1 - Iнформацiя про паралелепiпед\n2 - Вирахувати периметри граней\n3 - Об'єм паралелепiпеда\n4 - Площа бiчної поверхнi\n5 - Площа повної поверхнi\n0 - Вихiд");
+                Console.WriteLine("Оберiть, будь ласка функцiонал, де \n1 - Iнформацiя про паралелепiпед\n2 - Вирахувати периметри граней\n3 - Об'єм паралелепiпеда\n4 - Площа бiчної поверхнi\n5 - Площа повної поверхнi\n6 - Значення X\n7 - Значення Y\n8 - Значення Z\n9 - Змiнити X\n10 - Змiнити Y\n11 - Змiнити Z\n0 - Вихiд");
+                double yourChoice = GetTheNumber();
                 Console.Clear();
-                switch (GetTheNumber())
+                switch (yourChoice)
                 {
                     case 0:
                         return;
@@ -40,8 +38,32 @@ namespace Lessons
                     case 5:
                         Console.WriteLine(parallelepiped1.GetTotalSurfaceArea());
                         break;
+                    case 6:
+                        Console.WriteLine(parallelepiped1.GetAnX());
+                        break;
+                    case 7:
+                        Console.WriteLine(parallelepiped1.GetAnY());
+                        break;
+                    case 8:
+                        Console.WriteLine(parallelepiped1.GetAnZ());
+                        break;
+                    case 9:
+                        Console.WriteLine("Введiть координати X");
+                        double changeX = GetTheNumber();
+                        parallelepiped1.SetAnX(changeX);
+                        break;
+                    case 10:
+                        Console.WriteLine("Введiть координати Y");
+                        double changeY = GetTheNumber();
+                        parallelepiped1.SetAnY(changeY);
+                        break;
+                    case 11:
+                        Console.WriteLine("Введiть координати Z");
+                        double changeZ = GetTheNumber();
+                        parallelepiped1.SetAnZ(changeZ);
+                        break;
                     default:
-                        Console.WriteLine("Спробуйте ще раз"); 
+                        Console.WriteLine("Спробуйте ще раз");
                         break;
                 }
             }
@@ -92,6 +114,29 @@ namespace Lessons
         {
             return GetLateralSurfaceArea() + 2 * (theFirstMeasurement * theSecondMeasurement);
         }
-
+        public double GetAnX()
+        {
+            return theFirstMeasurement;
+        }
+        public double GetAnY()
+        {
+            return theSecondMeasurement;
+        }
+        public double GetAnZ()
+        {
+            return theThirdMeasurement;
+        }
+        public void SetAnX(double changeX)
+        {
+            theFirstMeasurement = changeX;
+        }
+        public void SetAnY(double changeY)
+        {
+            theSecondMeasurement = changeY;
+        }
+        public void SetAnZ(double changeZ)
+        {
+            theThirdMeasurement = changeZ;
+        }
     }
 }
